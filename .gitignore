@@ -1,0 +1,8 @@
+*/__pycache__/*
+*.ipynb
+uploads/*
+settings.py
+.ipynb_checkpoints/*
+.vscode/*
+*/migrations/*
+db.sqlite3
