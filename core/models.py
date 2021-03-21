@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from blogAPI.utils import *
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -10,7 +11,7 @@ class Post(models.Model):
 	#content  = models.TextField()
 	slug     = models.SlugField(max_length=200,null=True,blank=True)
 	photo    = models.ImageField(upload_to='profile_pics',blank=True,null=True)
-	#author   = models.Foreignkey(User,on_delete=models.CASCADE)
+	author   = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 	#likes    = models.ManyToManyField(User,blank=True,related_name="like")
 	#dislikes = models.ManyToManyField(User,blank=True,related_name="dislikes")
 	created_at = models.DateTimeField(default=timezone.now)
@@ -22,6 +23,7 @@ class Post(models.Model):
 		if not self.slug:
 			self.slug = unique_slug_generator(self)
 		return super().save(*args, **kwargs)		
+
 
 
 

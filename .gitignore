@@ -6,3 +6,4 @@ settings.py
 .vscode/*
 */migrations/*
 db.sqlite3
+profile_pics
