@@ -23,7 +23,7 @@ class PostSerializer(serializers.ModelSerializer):
 	photo = serializers.ImageField(max_length=None, allow_empty_file=False)
 	class Meta:
 		model = Post
-		fields = ['caption','created_at','slug','author','photo','post_comments','number_of_comments']
+		fields = ['caption','created_at','slug','author','photo','post_comments','number_of_comments','location']
 
 	def get_number_of_comments(self,obj):
 		return Comment.objects.filter(post=obj).count()
@@ -35,3 +35,6 @@ class PostSerializer(serializers.ModelSerializer):
 		#post_comments = paginator.page(page)
 		serializer = CommentSerializer(Comment.objects.filter(post=obj), many=True)
 		return serializer.data	
+
+
+        
