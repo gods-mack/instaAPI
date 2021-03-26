@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from core.models import UserProfile
 
 
 # User Serializer
@@ -18,6 +19,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 	def create(self,validated_data):
 		user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
+		up   = UserProfile.objects.create(user=user)  # create User profile
+		up.save()
 		return user
 
 
