@@ -5,35 +5,21 @@ from django.core.paginator import Paginator
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
-	#first_name = serializers.SerializerMethodField()
-	#username   = serializers.SerializerMethodField()
 	image      = serializers.SerializerMethodField()
 	class Meta:
 		model = User
 		fields = ('id','username', 'first_name','image')
-
-	#def get_first_name(self,obj):
-	#	return UserProfile.objects.get(user=obj).user.first_name
-	#def get_username(self,obj):
-	#	return UserProfile.objects.get(user=obj).user.username
 	def get_image(self,obj):
 		return '/media/'+UserProfile.objects.get(user=obj).image.name	
 	
 
 
 class CustomUserSerializerWithPosts(serializers.ModelSerializer):
-	#first_name = serializers.SerializerMethodField()
-	#username   = serializers.SerializerMethodField()
 	image      = serializers.SerializerMethodField()
 	posts      = serializers.SerializerMethodField()
 	class Meta:
 		model = User
 		fields = ('id','username', 'first_name','image', 'email','posts')
-
-	#def get_first_name(self,obj):
-	#	return UserProfile.objects.get(user=obj).user.first_name
-	#def get_username(self,obj):
-	#	return UserProfile.objects.get(user=obj).user.username
 	def get_image(self,obj):
 		return '/media/'+UserProfile.objects.get(user=obj).image.name	
 	def get_posts(self, obj):

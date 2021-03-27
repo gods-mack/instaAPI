@@ -57,3 +57,4 @@ class UserProfile(models.Model):
             out_size = (300,300)
             img.thumbnail(out_size)
             img.save(self.image.path)
+
