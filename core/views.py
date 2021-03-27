@@ -3,9 +3,10 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .serializers import PostSerializer
+from core.serializers import PostSerializer, CustomUserSerializerWithPosts
 from .models import Post
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -58,3 +59,12 @@ def post_detail(request, slug):
 	elif request.method == "DELETE":
 		post.delete()
 		return Response(status=status.HTTP_204_NO_CONTENT)				
+
+
+
+@api_view(['GET'])
+def user_details(request,user_name):
+	if request.method == 'GET':
+		user = User.objects.get(username=user_name)
+		serializer = CustomUserSerializerWithPosts(user)
+		return Response(serializer.data)

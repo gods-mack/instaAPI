@@ -11,5 +11,6 @@ router.register('posts', views.PostViewSet)
 urlpatterns = [
     path('posts/', views.post_list),
     path('posts/<slug:slug>/', views.post_detail),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('user/<str:user_name>/', views.user_details),
 ]
