@@ -1,4 +1,6 @@
 asgiref==3.3.1
+boto3==1.17.39
+botocore==1.20.39
 certifi==2020.12.5
 cffi==1.14.5
 chardet==4.0.0
@@ -13,6 +15,7 @@ django-crispy-forms==1.10.0
 django-js-asset==1.2.2
 django-rest-knox==4.1.0
 django-social-share==2.2.1
+django-storages==1.11.1
 djangorestframework==3.12.2
 drf-yasg==1.20.0
 gunicorn==20.0.4
@@ -20,6 +23,7 @@ idna==2.10
 inflection==0.5.1
 itypes==1.2.0
 Jinja2==2.11.3
+jmespath==0.10.0
 markdown2==2.3.10
 MarkupSafe==1.1.1
 packaging==20.9
@@ -29,10 +33,13 @@ psycopg2-binary==2.8.6
 pycparser==2.20
 Pygments==2.7.4
 pyparsing==2.4.7
+python-dateutil==2.8.1
 pytz==2020.5
 requests==2.25.1
 ruamel.yaml==0.16.13
 ruamel.yaml.clib==0.2.2
+s3transfer==0.3.6
+six==1.15.0
 sqlparse==0.4.1
 uritemplate==3.0.1
 urllib3==1.26.3
