@@ -1,6 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from  . import views
+
+
+
 #from authentication.urls import *
 router = DefaultRouter()
 router.register('posts', views.PostViewSet)
@@ -14,3 +17,4 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('user/<str:user_name>/', views.user_details),
 ]
+
