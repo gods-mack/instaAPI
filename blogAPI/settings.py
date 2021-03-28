@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'knox',
     'corsheaders',
     'drf_yasg',
+    'storages'
 
 ]
 
@@ -152,3 +154,33 @@ MEDIA_URL = '/media/'
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
+
+
+
+
+#S3 BUCKETS CONFIG
+'''
+AWS_ACCESS_KEY_ID = 'AKIAZ7Q477YIJA522FP3'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'instaapibucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+'''
+
+AWS_ACCESS_KEY_ID = 'AKIAZ7Q477YILCSH2I4P'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'godsmack'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+AWS_DEFAULT_ACL = 'public-read'
+
+AWS_LOCATION = 'static'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'core.storages.MediaStore'
