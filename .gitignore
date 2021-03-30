@@ -5,3 +5,4 @@ uploads/*
 .vscode/*
 */migrations/*
 db.sqlite3
+blogAPI/.env
