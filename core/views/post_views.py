@@ -4,17 +4,12 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from core.serializers import PostSerializer, CustomUserSerializerWithPosts
-from .models import Post
+from core.models import Post
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 # Create your views here.
 
-
-class PostViewSet(viewsets.ModelViewSet):
-	queryset = Post.objects.all()
-	serializer_class = PostSerializer
-	lookup_field = 'slug'
 
 
 @api_view(['GET','POST'])
