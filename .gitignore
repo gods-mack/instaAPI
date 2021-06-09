@@ -7,3 +7,6 @@ uploads/*
 db.sqlite3
 blogAPI/.env
 .env
+core/views/__pycache__
+__pycache__
+*.pyc
