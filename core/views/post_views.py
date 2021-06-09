@@ -24,7 +24,7 @@ def post_list(request):
 
 
 	elif request.method=='POST':
-		print("POST REQUEST BEING PROCESSED")
+		print("###################################POST REQUEST BEING PROCESSED")
 		serializer = PostSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
@@ -55,11 +55,3 @@ def post_detail(request, slug):
 		post.delete()
 		return Response(status=status.HTTP_204_NO_CONTENT)				
 
-
-
-@api_view(['GET'])
-def user_details(request,user_name):
-	if request.method == 'GET':
-		user = User.objects.get(username=user_name)
-		serializer = CustomUserSerializerWithPosts(user)
-		return Response(serializer.data)
